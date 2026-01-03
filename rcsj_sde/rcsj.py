@@ -96,4 +96,5 @@ def rcsj_solver(epsilon: float,
         y[n+1] = Yn1
 
     return y
+# this part uses Heum method for simulation 
 

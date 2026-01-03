@@ -3,4 +3,5 @@
 *.png
 tmp/
 *.egg-info/
+*.pdf
 __pycache__/
