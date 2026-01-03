@@ -165,7 +165,7 @@ class SpinGlassLayer:
         """
         Calculate angle between F' magnetization and bulk F direction.
 
-        This is the key quantity θ_L or θ_R in the Houzet-Buzdin LRTC formula.
+        This is the key quantity theta_L or theta_R in the Houzet-Buzdin LRTC formula.
 
         Parameters
         ----------
@@ -263,7 +263,7 @@ class MagneticConfiguration:
     Manages the complete magnetic state of the S/F'/F/F'/S junction.
 
     Tracks bulk F magnetization and spin-glass configurations for left/right F' layers.
-    The key output is the non-collinearity angles θ_L(x,y) and θ_R(x,y).
+    The key output is the non-collinearity angles theta_L(x,y) and theta_R(x,y).
     """
     
     def __init__(self, geometry: DiffusiveJunctionGeometry,
@@ -300,7 +300,7 @@ class MagneticConfiguration:
     
     def get_noncollinearity_angles(self, ix: int, iy: int) -> Tuple[float, float]:
         """
-        Get non-collinearity angles θ_L and θ_R at grid point (ix, iy).
+        Get non-collinearity angles theta_L and theta_R at grid point (ix, iy).
 
         Returns
         -------
@@ -388,12 +388,12 @@ class MagneticConfiguration:
     
     def get_average_lrtc_factor(self) -> float:
         """
-        Compute spatially-averaged LRTC generation factor sin(θ_L)·sin(θ_R).
+        Compute spatially-averaged LRTC generation factor sin(theta_L)*sin(theta_R).
 
         Returns
         -------
         float
-            Average of sin(θ_L)*sin(θ_R) across junction
+            Average of sin(theta_L)*sin(theta_R) across junction
         """
         lrtc_sum = 0.0
         for i in range(self.n_sg_x):
@@ -446,7 +446,7 @@ class UsadelKernel:
     Computes local supercurrent density using Houzet-Buzdin analytical result
     for S/F'/F/F'/S junctions in diffusive limit.
 
-    The LRTC amplitude is: j_c ∝ sin(θ_L)·sin(θ_R)·exp(-d_F/ξ_T)
+    The LRTC amplitude is: j_c ~ sin(theta_L)*sin(theta_R)*exp(-d_F/xi_T)
 
     Reference: Houzet & Buzdin, PRB 76, 060504(R) (2007)
     """
@@ -484,8 +484,8 @@ class UsadelKernel:
         Compute local critical current density j_c based on non-collinearity.
 
         Following Houzet-Buzdin:
-        j_c ∝ sin(θ_L)·sin(θ_R)·exp(-d_F/ξ_T) [LRTC, dominant]
-            + cos(θ_L)·cos(θ_R)·exp(-d_F/ξ_S) [singlet, suppressed]
+        j_c ~ sin(theta_L)*sin(theta_R)*exp(-d_F/xi_T) [LRTC, dominant]
+            + cos(theta_L)*cos(theta_R)*exp(-d_F/xi_S) [singlet, suppressed]
 
         Parameters
         ----------

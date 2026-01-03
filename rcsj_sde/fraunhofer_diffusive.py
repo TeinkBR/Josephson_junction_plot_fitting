@@ -43,7 +43,7 @@ class FraunhoferIntegrator:
         self.kernel = UsadelKernel(materials, geometry)
         
         # Physical constants
-        self.hbar = materials.hbar  # meV·ps
+        self.hbar = materials.hbar  # meV*ps
         self.phi0 = 2.067833848e-15  # Wb (flux quantum), but work in natural units
         self.g_muB = materials.g_muB  # meV/T
     
@@ -52,7 +52,7 @@ class FraunhoferIntegrator:
         """
         Compute phase accumulated from magnetic flux at position (x,y).
 
-        φ_flux = (2π/Φ_0) * [B_ext · effective_area + B_mag · volume]
+        phi_flux = (2*pi/Phi_0) * [B_ext . effective_area + B_mag . volume]
 
         For simplicity, we compute the phase shift based on external field
         and an effective magnetization contribution from the frozen spin-glass.
@@ -73,7 +73,7 @@ class FraunhoferIntegrator:
         """
         # Phase from external field
         # Flux through effective area = B * A_eff
-        # Phase = 2π * Φ/Φ_0, but we work in natural units where Φ_0 = 2π
+        # Phase = 2*pi * Phi/Phi_0, but we work in natural units where Phi_0 = 2*pi
         effective_area_local = self.geo.junction_length * self.geo.junction_width * 1e-18  # m²
         flux_quantum = 2.067833848e-15  # Wb
         
@@ -91,7 +91,7 @@ class FraunhoferIntegrator:
             # Get average magnetization at this position
             theta_L, theta_R = mag_config.get_noncollinearity_at_position(x, y)
             
-            # The frozen magnetization creates residual flux - related to phase shift δ
+            # The frozen magnetization creates residual flux - related to phase shift delta
             # Simplified: use the residual angle as phase contribution
             # More rigorous approach would integrate magnetization over volume
             phi_mag = 0.1 * (theta_L + theta_R) / 2  # empirical relation
@@ -104,7 +104,7 @@ class FraunhoferIntegrator:
         """
         Compute total critical current from Fraunhofer integration.
 
-        I_c(B) = |∫∫ j_c(x,y) * exp(i*φ_flux(x,y)) dxdy|
+        I_c(B) = |integral integral j_c(x,y) * exp(i*phi_flux(x,y)) dxdy|
 
         Parameters
         ----------
@@ -185,7 +185,7 @@ class FraunhoferIntegrator:
         """
         Standard sinc Fraunhofer pattern for reference (pure singlet).
 
-        I_c(B) = Ic0 * |sinc(π*Φ/Φ_0)|
+        I_c(B) = Ic0 * |sinc(pi*Phi/Phi_0)|
 
         Parameters
         ----------
@@ -315,7 +315,7 @@ class FieldSweepSimulation:
 def extract_li_fit_parameters(B_range: np.ndarray, Ic_data: np.ndarray) -> Dict[str, float]:
     """
     Extract parameters from Li's empirical fit function:
-    I_c(Φ) = I_c0 * exp(-d_Nb/ξ_T) * |J_1(...) / (...)|
+    I_c(Phi) = I_c0 * exp(-d_Nb/xi_T) * |J_1(...) / (...)|
 
     Parameters
     ----------
@@ -345,3 +345,7 @@ def extract_li_fit_parameters(B_range: np.ndarray, Ic_data: np.ndarray) -> Dict[
         'phase_shift': phase_shift,
         'B_at_max': B_max_fit,
     }
+
+
+# Alias for compatibility
+FraunhoferCalculator = FraunhoferIntegrator
