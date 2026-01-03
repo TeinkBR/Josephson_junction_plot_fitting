@@ -236,7 +236,7 @@ result = compare_simulation_to_experiment(
     junction_area
 )
 
-print(f"R² = {result['r_squared']:.4f}")
+print(f"R^2 = {result['r_squared']:.4f}")
 print(f"Extracted xi_T = {result['extracted_params']['xi_T']:.1f} nm")
 print(f"Extracted delta = {result['extracted_params']['delta']:.4f} rad")
 ```
