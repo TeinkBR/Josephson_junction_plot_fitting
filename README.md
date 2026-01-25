@@ -2,7 +2,7 @@
 
 ## Overview
 
-This package implements a comprehensive simulation framework for **diffusive spin-triplet Josephson junctions** with **antiferromagnetically coupled perpendicular magnetization domains** and **spin-glass interface layers**. The framework is specifically designed to model the experimental observations reported by Li et al. in their study of Nb/Fe/Cr multilayer junctions.
+This package implements a comprehensive simulation framework for **diffusive spin-triplet Josephson junctions** with **antiferromagnetically coupled perpendicular magnetization domains** and **spin-glass interface layers**. The framework is designed to model the assymetrical phase shift under sweeping $\vec{B}$ field experimental observations in study of Nb/Fe/Cr multilayer Josephson junctions.
 
 ## Key Features
 
@@ -24,7 +24,7 @@ This package implements a comprehensive simulation framework for **diffusive spi
 
 ### 4. **Spectral Leakage**
 - Disorder in F' layers prevents complete suppression expected in clean synthetic antiferromagnets (SAF)
-- Explains Li's observation: **no suppression in upper field sweep** despite antiferromagnetic configuration
+- Explains the observation: **no suppression in upper field sweep** despite antiferromagnetic configuration
 - Quantified via `leakage_ratio = std(sin theta) / |mean(sin theta)|`
 
 ### 5. **Magnetic Field Dependence & Hysteresis**
@@ -88,13 +88,6 @@ Expected output: "[PASS] ALL TESTS PASSED"
 source venv/bin/activate
 jupyter notebook examples/diffusive_complete_workflow.ipynb
 ```
-
-The notebook demonstrates all stages:
-1. Initialize 5-layer junction geometry (S/F'/F/F'/S)
-2. Setup magnetic configuration with spin-glass
-3. Compute Fraunhofer pattern
-4. Extract Li's fit function parameters
-5. Analyze spectral leakage and hysteresis
 
 ### Programmatic Usage Example
 
@@ -164,7 +157,7 @@ $$I_c(B) = \left| \int\int j_c(x,y) \cdot e^{i\phi_{flux}(x,y)} dx\, dy \right|$
 
 where $\phi_{flux} = 2\pi \Phi / \Phi_0$ accounts for external and domain-induced magnetization.
 
-### Li's Empirical Fit Function
+### Empirical Fit Function
 
 $$I_c(\Phi) = I_{c0} \cdot e^{-d_{Nb}/\xi_T} \cdot \left| \frac{J_1\left(\pi(\Phi-\delta)/\Phi_0\right)}{\pi(\Phi-\delta)/\Phi_0} \right|$$
 
@@ -219,13 +212,13 @@ After field sweep, F' layers retain net magnetization despite nominally antipara
    - Hysteresis loss (area between curves)
 
 4. **Fit Quality**
-   - $\chi^2$ against Li's function
+   - $\chi^2$ 
    - $R^2$ coefficient of determination
    - Extracted parameters: $I_{c0}$, $\xi_T$, $\delta$
 
 ### Comparison with Experiment
 
-The notebook includes code to compare simulation results directly with Li et al. experimental data:
+The notebook includes code to compare simulation vs experimental data:
 
 ```python
 from rcsj_sde.validation_tools import compare_simulation_to_experiment
@@ -265,9 +258,9 @@ print(f"Extracted delta = {result['extracted_params']['delta']:.4f} rad")
 3. **Eschrig (2011)**: "Spin-polarized supercurrents for spintronics", *Physics Today* **64** (1), 43
 
 ### Experimental Context
-4. **Li et al. (2024)**: "Spin-orbit coupling suppression and singlet blocking of spin-triplet Cooper pairs"
-5. **Robinson et al. (2010)**: "Controlled Injection of Spin-Triplet Supercurrents", *Science* **329**, 59
-6. **Khaire et al. (2010)**: "Observation of Spin-Triplet Superconductivity in Co-Based Josephson Junctions", *PRL* **104**, 137002
+4. **Robinson et al. (2010)**: "Controlled Injection of Spin-Triplet Supercurrents", *Science* **329**, 59
+5. **Khaire et al. (2010)**: "Observation of Spin-Triplet Superconductivity in Co-Based Josephson Junctions", *PRL* **104**, 137002
+6. **Komori et al. (2021)** : "Spin-orbit coupling suppression and singlet-state blocking of spin-triplet Cooper pairs" , *Science* **sciadv.abe0128** 
 
 ### Spin-Glass Physics
 7. **Spin-Glass Theory**: Edwards-Anderson Model, Sherrington-Kirkpatrick Model
@@ -286,49 +279,11 @@ pip install --upgrade numpy scipy numba
 
 ### Numerical Issues
 
-**Problem**: LRTC values near zero or negative
+**Problem**: Saturated magnetic layers? 
 - Check: Are F' layers properly initialized with random orientations?
 - Verify: Non-collinearity angles should be distributed across [0, pi]
 
-**Problem**: Fraunhofer pattern completely flat
-- Check: Is j_c_profile being computed correctly?
-- Verify: Coherence length ratios are reasonable
 
-**Problem**: Slow performance
-- Use coarser grids: `n_grid_x = 10, n_grid_y = 10`
-- Reduce Metropolis steps: `n_relax_steps = 50`
-- Reduce field sweep points
-
-## Future Extensions
-
-1. **Dynamical Domain Walls**: Replace Metropolis with LLG dynamics
-2. **Spin-Orbit Coupling**: Add Rashba SOC effects on CPR
-3. **Shapiro Steps**: AC drive with existing framework
-4. **Temperature Dependence**: Full T(xi_T) and T(Delta) dependence
-5. **Parallel I-V**: Distribute calculations over CPU cores
-6. **Experimental Fitting**: Direct optimization against Li's data
-
-## Contributing
-
-To extend this framework:
-
-1. **New physics**: Add to appropriate module (`diffusive_triplet.py` for geometry/materials, `fraunhofer_diffusive.py` for transport)
-2. **New validation metrics**: Add to `validation_tools.py`
-3. **New examples**: Create notebook in `examples/`
-4. **Testing**: Add test cases to `test_simulation.py`
-
-## License
-
-See LICENSE file in the root directory.
-
-## Contact & Support
-
-For questions about this implementation, refer to:
-- The comprehensive tutorial notebook: `examples/diffusive_complete_workflow.ipynb`
-- The physical parameter tables in README sections 1-2
-- The validation test: `test_simulation.py`
-
----
 
 **Last Updated**: January 2026  
 **Framework Version**: 1.0 (Diffusive Usadel + Spin-Glass)
