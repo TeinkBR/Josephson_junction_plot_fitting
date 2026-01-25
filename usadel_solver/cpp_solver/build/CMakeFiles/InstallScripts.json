@@ -1,0 +1,8 @@
+{
+	"InstallScripts" : 
+	[
+		"/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/cmake_install.cmake",
+		"/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/_deps/pybind11-build/cmake_install.cmake"
+	],
+	"Parallel" : false
+}

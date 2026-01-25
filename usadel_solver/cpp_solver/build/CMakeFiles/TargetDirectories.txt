@@ -1,0 +1,13 @@
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/CMakeFiles/usadel_cpp.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/CMakeFiles/edit_cache.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/CMakeFiles/rebuild_cache.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/CMakeFiles/list_install_components.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/CMakeFiles/install.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/CMakeFiles/install/local.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/CMakeFiles/install/strip.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/_deps/pybind11-build/CMakeFiles/edit_cache.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/_deps/pybind11-build/CMakeFiles/rebuild_cache.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/_deps/pybind11-build/CMakeFiles/list_install_components.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/_deps/pybind11-build/CMakeFiles/install.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/_deps/pybind11-build/CMakeFiles/install/local.dir
+/Users/jingyili/Downloads/Coding-projects/Simulation-project/ferromagnetic-josephson-junction/usadel_solver/cpp_solver/build/_deps/pybind11-build/CMakeFiles/install/strip.dir

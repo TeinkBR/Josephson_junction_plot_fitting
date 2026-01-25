@@ -1,0 +1,1 @@
+/usr/bin/clang++  -stdlib=libc++ -O3 -DNDEBUG -arch arm64 -bundle -Wl,-headerpad_max_install_names -Xlinker -undefined -Xlinker dynamic_lookup -flto -L/usr/local/lib -o usadel_cpp.cpython-313-darwin.so CMakeFiles/usadel_cpp.dir/src/usadel_core.cpp.o CMakeFiles/usadel_cpp.dir/src/python_bindings.cpp.o
